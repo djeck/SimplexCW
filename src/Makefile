@@ -18,7 +18,7 @@ default: classes
 classes: $(CLASSES:.java=.class)
 
 clean:
-	$(RM) *.class
+	$(RM) compute/*.class render/*.class
 
 launch:
 	java render.Launcher
