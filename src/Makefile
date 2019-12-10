@@ -13,12 +13,18 @@ CLASSES = \
 	render/ReceiverWindow.java\
 	render/Launcher.java
 
-default: classes
+default: jar
 
 classes: $(CLASSES:.java=.class)
 
 clean:
-	$(RM) compute/*.class render/*.class
+	$(RM) -f compute/*.class render/*.class SimplexCW.jar
 
-launch:
+launch: classes
 	java render.Launcher
+
+jar: classes
+	jar cmvf MANIFEST.MF SimplexCW.jar render/*.class compute/*.class
+
+launch_jar: jar
+	java -jar SimplexCW.jar
